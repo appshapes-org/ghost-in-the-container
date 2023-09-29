@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  ghost:
+    image: ghost:latest
+    container_name: ghost-in-the-container
+    ports:
+      - "2368:2368"
+    volumes:
+      - ./data:/var/lib/ghost/content/data
+      - ./content:/var/lib/ghost/content
+    environment:
+      - url=http://localhost:2368
+      - NODE_ENV=development
+      - database__connection__filename=/var/lib/ghost/content/data/ghost-in-the-container.db
